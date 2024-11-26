@@ -18,19 +18,35 @@ A aplicação oferece as seguintes funcionalidades:
 
 # Arquitetura
 
-O sistema foi desenvolvido utilizando uma arquitetura de microsserviços, publicada utilizando em um cluster EKS (Kubernetes) na AWS. Cada microsserviço possui seu próprio banco de dados, variando entre bancos relacionais e não relacionais. Além disto, a aplicação está exposta via API Gateway da AWS, com Lambda Functions realizando a integração com o Cognito para autenticação e autorização dos usuários.
+O sistema foi desenvolvido utilizando uma arquitetura de microsserviços, publicada utilizando em um cluster EKS (Kubernetes) na AWS. Cada microsserviço possui seu próprio banco de dados, variando entre bancos relacionais e não relacionais. Além disto, a aplicação está exposta via API Gateway da AWS, com Lambda Functions realizando a integração com o Cognito para autenticação e autorização dos usuários. Todo provisionamento de infraestrutura é feito via Terraform em repositórios específicos para IaC.
+
+![Arquitetura_dotlanche](https://github.com/user-attachments/assets/c71289ee-6a73-493c-86f9-ed7673782f0f)
+
+## Serviços
+- **Pedidos API**: Responsável por receber os pedidos criados no frontend e o seu gerenciamento antes do início da produção.
+- **Produtos API**: Responsável pelo gerenciamento do catálogo de produtos.
+- **Pagamentos API**: Responsável pelo processamento dos pagamentos e pela integração com provedores de pagamento.
+- **Produção API**: Responsável pela gestão do ciclo de vida do pedido após o início da sua produção.
+
+## Autenticação
+A autenticação é feita via cognito utilizando Lambda Functions para comunicação com os pools. As Functions existentes são:
+- **Get User**: Permite que usuários se identifiquem através do seu CPF, buscando os usuários cadastrados no cognito.
+- **Sign Up**: Permite que usuários se cadastrem enviando suas informações básicas como CPF, Nome, email e senha.
+- **Sign In**: Realiza a autenticação do usuário através de CPF e senha, retorna o token JWT para a autorização no API Gateway. Também permite a geração de token anônimo caso o usuário não queira se identificar.
+
+## Infraestrutura
+O provisionamento de infraestrutura é feito via Terraform nos seguintes repositórios:
+- kubernetes-terraform: Provisionamento da VPC, Subnets e Cluster EKS
+- dotlanche-database: Provisionamento de bancos de dados
+- dotlanche-authentication: Provisionamento e configuração do API Gateway, Load Balancer, Cognito e as Functions.
 
 # Stack
-
-# Links
-
-<!--
-
-**Here are some ideas to get you started:**
-
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+- .NET
+- Kubernetes
+- Postgresql
+- MongoDB Atlas
+- AWS EKS
+- AWS Lambda Functions
+- AWS Cognito
+- AWS Api Gateway
+- Terraform
