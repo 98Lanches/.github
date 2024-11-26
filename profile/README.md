@@ -1,6 +1,6 @@
 # 🍔 Projeto Dotlanches - TECH Challenge FIAP 2024 
 
-Este é um projeto desenvolvido para o Tech Challenge curso de Software Architecture da FIAP em 2024. A proposta é um sistema que é construído de maneira incremental ao longo do curso, aplicando tecnologias, metodologias e boas práticas aprendidas ao longo do curso.
+Este é um projeto desenvolvido para o Tech Challenge curso de Software Architecture da FIAP em 2024. A proposta é um sistema que é construído de maneira incremental, aplicando tecnologias, metodologias e boas práticas aprendidas ao longo do curso.
 
 # O Dotlanches
 
