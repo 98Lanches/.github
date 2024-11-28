@@ -18,7 +18,7 @@ A aplicação oferece as seguintes funcionalidades:
 
 # Arquitetura
 
-O sistema foi desenvolvido utilizando uma arquitetura de microsserviços, publicada utilizando em um cluster EKS (Kubernetes) na AWS. Cada microsserviço possui seu próprio banco de dados, variando entre bancos relacionais e não relacionais. Além disto, a aplicação está exposta via API Gateway da AWS, com Lambda Functions realizando a integração com o Cognito para autenticação e autorização dos usuários. Todo provisionamento de infraestrutura é feito via Terraform em repositórios específicos para IaC.
+O sistema foi desenvolvido utilizando uma arquitetura de microsserviços, publicada utilizando em um cluster EKS (Kubernetes) na AWS. Os serviços se comunicam sincronamente via HTTP e cada microsserviço possui seu próprio banco de dados, variando entre bancos relacionais e não relacionais. Além disto, a aplicação está exposta via API Gateway da AWS, com Lambda Functions realizando a integração com o Cognito para autenticação e autorização dos usuários. Todo provisionamento de infraestrutura é feito via Terraform em repositórios específicos para IaC.
 
 ![Arquitetura_dotlanche](https://github.com/user-attachments/assets/c71289ee-6a73-493c-86f9-ed7673782f0f)
 
